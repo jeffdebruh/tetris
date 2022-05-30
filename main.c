@@ -1,32 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 void printboard(char board[][10]){
 	for (int i=0;i<9;i++){
 		for (int j=0;j<9;j++){
 			printf("%s|",&board[i][j]);
 		}
-		puts("");
-	}
-}
-
-void emptyboard(char board[][10]){
-	for (int i=0;i<9;i++){
-		for (int j=0;j<9;j++){
-			///board[i][j]=" ";
-		}
-		puts("");
+		puts("|");
 	}
 }
 
 int linefull(int y, char board[][10]){
 	int c=0;
 	for (int i=0;i>9;i++){
-		///if (&board[i][y]=="@"){
+		if (strcmp(&board[i][y],"@")==0){
 			c+=1;
 		}
-	
+	}
 	return c;
 }
 
@@ -47,22 +39,18 @@ int awardpoints(int lines,int points){
 		default:
 			printf("error too much lines");
 		}
-		return 0;
+		return points;
 	}
 
 ///void fall(char board){
 	///for (int i=0;i>9;i++){
 		
-	
-	
-	
 
 int lineclear(int x,char board[][10],int points){
 	for (int i=9;i>=0;i--){
 		if (linefull(i,board)==10){
 			for (int j=0;j>9;i++){
 				///&board[i][j]=" ";
-			
 			x+=1;
 			}
 		}
@@ -72,8 +60,19 @@ int lineclear(int x,char board[][10],int points){
 }
 
 int main(){
-	int points=0;
-	char board[10][10];
+	///int points=0;
+	char board[10][10]={{"_"}};
 	printboard(board);
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
