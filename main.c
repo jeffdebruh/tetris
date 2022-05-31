@@ -39,29 +39,37 @@ int awardpoints(int lines,int points){
 		default:
 			printf("error too much lines");
 		}
-		return points;
-	}
+	return points;
+}
 
-///void fall(char board){
-	///for (int i=0;i>9;i++){
-		
+void fall(char board[][10]){
+	for (int i=8;i<0;i--){
+		for (int j=0;j<9;j++){
+			if (strcmp(&board[i][j],"_")==0 && strcmp(&board[i+1][j],"@")==0){
+				board[i][j]="@";
+				board[i+1][j]="_";
+			}
+		}
+	}
+}
 
 int lineclear(int x,char board[][10],int points){
 	for (int i=9;i>=0;i--){
 		if (linefull(i,board)==10){
 			for (int j=0;j>9;i++){
-				///&board[i][j]=" ";
+				board[i][j]="_";
 			x+=1;
+			return 0;
 			}
 		}
 	awardpoints(x,points);
-	return 0;
 	}
+	return 0;
 }
 
 int main(){
 	///int points=0;
-	char board[10][10]={{"_"}};
+	char board[10][10]={{""}};
 	printboard(board);
 	return 0;
 }
