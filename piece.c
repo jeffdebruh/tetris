@@ -15,7 +15,7 @@ piece createpiece(){
 	srand(time(NULL));
 	x.piecenum = rand()%7;
 	x.orientation = rand()%4;
-	memset(x.piecet, ' ', 16);
+	memset(x.piecet, '0', 16);
 	if (x.piecenum == 1 && x.orientation == 1){ // O
 		x.piecet[0][0] = 1;
 		x.piecet[0][1] = 1;
