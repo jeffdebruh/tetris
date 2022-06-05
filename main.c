@@ -74,7 +74,6 @@ int lineclear(int board[][10], int pts, int dif) {
       x += 1;
     }
   }
-  printf("%d",n);
   fall(board,n,x);
   x=awardpts(x, pts, dif);
   return x;
