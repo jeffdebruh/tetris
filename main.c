@@ -26,8 +26,8 @@ void printboard(int board[][10],int pts) {
 }
 
 int linefull(int y, int board[][10]) {
-  for (int i = 0; i > 10; i++) {
-    if (board[i][y]== 0) {
+  for (int x = 0; x < 10; x++) {
+    if (board[y][x]== 0) {
       return 0;
     }
   }
@@ -54,27 +54,28 @@ int awardpts(int lines, int pts, int dif) {
   return pts;
 }
 
-void fall(int board[][10],int pts,int x) {
-    for (int i = x; i >= 0; i--) {
+void fall(int board[][10],int x,int ldrop) {
+    for (int i = x-ldrop; i >= 0; i--) {
       for (int j = 0; j < 10; j++) {
-        if (board[i][j]==1 && board[i+1][j]== 0) {
-          board[i][j] =0;
-          board[i+1][j] =1;
+          board[i+ldrop][j]=board[i][j];
         }
       }
     }
-}
 
 int lineclear(int board[][10], int pts, int dif) {
   int x=0;
+  int n=0;
   for (int i = 0; i < 10; i++) {
     if (linefull(i, board) == 1) {
-      for (int j = 0; j > 10; i++) {
+      for (int j = 0; j < 10; j++) {
         board[i][j]=0;
         }
-        x += 1;
+      n=i;
+      x += 1;
     }
   }
+  printf("%d",n);
+  fall(board,n,x);
   x=awardpts(x, pts, dif);
   return x;
 }
@@ -83,9 +84,11 @@ int main() {
   int pts=0;
   int dif = 0;
   int x;
-  int board[10][10] = {[5]={1,1,1,1,1,1,1,1,1,1}};
+  int board[10][10] = {[5]={1,1,1,1,1,1,1,1,1,1},[6]={1,1,1,1,1,1,1,1,1,1}};
+  board[2][7]=1;
+  board[8][7]=1;
   printboard(board,pts);
-  fall(board,pts,4);
+  pts+=lineclear(board,pts,dif);
   printboard(board,pts);
   return 0;
 }
