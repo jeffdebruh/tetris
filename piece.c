@@ -67,7 +67,7 @@ piece createpiece(int num, int o){
 		x.piecet[0][3] = 1;
 		x.piecet[1][3] = 1;
 		x.piecet[2][2] = 1;
-		x.piecet[3][2] = 1;
+		x.piecet[1][2] = 1;
 	}
 	if (x.piecenum == 3 && x.orientation == 2){
 		x.piecet[1][3] = 1;
@@ -76,16 +76,16 @@ piece createpiece(int num, int o){
 		x.piecet[0][1] = 1;
 	}
 	if (x.piecenum == 3 && x.orientation == 3){
-		x.piecet[0][3] = 1;
+		x.piecet[2][3] = 1;
 		x.piecet[1][3] = 1;
-		x.piecet[2][2] = 1;
-		x.piecet[3][2] = 1;
+		x.piecet[1][2] = 1;
+		x.piecet[0][2] = 1;
 	}
 	if (x.piecenum == 3 && x.orientation == 0){
 		x.piecet[1][3] = 1;
 		x.piecet[1][2] = 1;
-		x.piecet[0][2] = 1;
-		x.piecet[0][1] = 1;
+		x.piecet[1][2] = 1;
+		x.piecet[1][1] = 1;
 	}
 	if (x.piecenum == 4 && x.orientation == 1){ // Z
 		x.piecet[2][3] = 1;
