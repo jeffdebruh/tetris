@@ -27,65 +27,48 @@ int awardpoints(int lines,int points){
 	}
 
 void writeFile( scoring tab[], int size){
-	FILE* fichier = NULL;
+	FILE* file = NULL;
 	file = fopen("nom.txt", "w+");
-	if (fichier = NULL){
+	if (file == NULL){
 		printf("Ouverture fichier impossible \n");
 		printf(" code erreur = %d \n", errno);
 		printf(" Message d'erreur = %s \n", strerror(errno));
 		exit (1);
 	}
-	for (int i=0, i<size, i++){
+	for (int i = 0; i < size; i++){
 		fprintf(file, "%s", tab[i].name);
 	}
-	for (int j=0, j<size, i++){
+	for (int j=0; j < size; j++){
 		fprintf(file, "%d", tab[j].score);
 	}
 	fprintf(file, "\n");
 }		
 
 scoring* readfile(int* pnmbr){
-	scoring* tab = NULL;
-	FILE* file = NULL;
-	int Letternbr;
-	file = fopen("nom.txt","r");
-	if (fichier = NULL){
-		printf("Ouverture fichier impossible \n");
-		printf(" code erreur = %d \n", errno);
-		printf(" Message d'erreur = %s \n", strerror(errno));
-		exit (1);
-	}
-	
+	  scoring* tab = NULL;
+	  FILE* file = NULL;
+	  int Letternbr;
+	  file = fopen("nom.txt","r");
+	  if (file == NULL){
+	  	printf("Ouverture fichier impossible \n");
+		  printf(" code erreur = %d \n", errno);
+		  printf(" Message d'erreur = %s \n", strerror(errno));
+		  exit (1);
+	  }
+    char playerline[1000];
+    while (fgets(playerline, 999, file) != NULL){
+      *pnmbr ++;
+    }    
+    tab = malloc(*pnmbr * sizeof(scoring));
+    rewind(file);
+    for (int i = 0; i < *pnmbr; i++){
+      fscanf( file, "%s", tab[i].name);
+      fscanf( file,"%d", &tab[i].score);
+    }
+  return (tab);
+  }
+
+   
 
 
-
-
-
-}
-
-
-
-
-
-
-
-
-
-int main(){
-FILE* fichier = NULL;
-fichier = fopen("nom.txt", "w+");
-int points;
-int lines;    
-if (fichier = NULL){
-	printf("Ouverture fichier impossible \n");
-	printf(" code erreur = %d \n", errno);
-	printf(" Message d'erreur = %s \n", strerror(errno));
-	exit (1);
-}
-
-
-
-
-scoring.score = awardpoints(int lines,int points);
-scoring.name = fscanf(" Quel est ton nom ? \n")
- 
+    
