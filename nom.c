@@ -6,25 +6,25 @@ typedef struct{
 	char name[20]; 
 } scoring;
 
-int awardpoints(int lines,int points){
-	switch (lines){
-		case 1:
-			points+=40*(lines+1);
-			break;
-		case 2:
-			points+=100*(lines+1);
-			break;
-		case 3:
-			points+=300*(lines+1);
-			break;
-		case 4:
-			points+=1200*(lines+1);
-			break;
-		default:
-			printf("error too much lines");
-	}
-	return points;
-	}
+int awardpts(int lines, int pts, int dif) {
+  switch (lines) {
+  case 1:
+    pts += 40 * (dif + 1);
+    break;
+  case 2:
+    pts += 100 * (dif + 1);
+    break;
+  case 3:
+    pts += 300 * (dif + 1);
+    break;
+  case 4:
+    pts += 1200 * (dif + 1);
+    break;
+  default:
+    puts("error too much lines");
+  }
+  return pts;
+}
 
 void writeFile( scoring tab[], int size){
 	FILE* file = NULL;
