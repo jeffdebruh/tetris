@@ -45,28 +45,28 @@ void writeFile( scoring tab[], int size){
 }		
 
 scoring* readfile(int* pnmbr){
-	  scoring* tab = NULL;
-	  FILE* file = NULL;
-	  int Letternbr;
-	  file = fopen("nom.txt","r");
-	  if (file == NULL){
-	  	printf("Ouverture fichier impossible \n");
-		  printf(" code erreur = %d \n", errno);
-		  printf(" Message d'erreur = %s \n", strerror(errno));
-		  exit (1);
+	scoring* tab = NULL;
+	FILE* file = NULL;
+	int Letternbr;
+	file = fopen("nom.txt","r");
+	if (file == NULL){
+		printf("Ouverture fichier impossible \n");
+		printf(" code erreur = %d \n", errno);
+		printf(" Message d'erreur = %s \n", strerror(errno));
+		exit (1);
 	  }
-    char playerline[1000];
-    while (fgets(playerline, 999, file) != NULL){
-      *pnmbr ++;
+	char playerline[1000];
+	while (fgets(playerline, 999, file) != NULL){
+		*pnmbr ++;
     }    
-    tab = malloc(*pnmbr * sizeof(scoring));
-    rewind(file);
-    for (int i = 0; i < *pnmbr; i++){
-      fscanf( file, "%s", tab[i].name);
-      fscanf( file,"%d", &tab[i].score);
-    }
-  return (tab);
-  }
+	tab = malloc(*pnmbr * sizeof(scoring));
+	rewind(file);
+	for (int i = 0; i < *pnmbr; i++){
+		fscanf( file, "%s", tab[i].name);
+		fscanf( file,"%d", &tab[i].score);
+	}
+	return (tab);
+	}
 
    
 
